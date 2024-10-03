@@ -13,6 +13,23 @@ const ordXPrecioMenorMayor = () => {
     listaOrdenada()
 }
 
+//******************Carrito*****/
+const agregarBataCarrito = (bateriaMarca, bateriaPrecio, bataCantidad) => {
+    const bataIgual = carrito.find(b => b.marca === bateriaMarca);
+    
+    // Si la bata está en el carrito, actualizo cantidad
+    if (bataIgual) {
+        bataIgual.cantidad += bataCantidad;
+    } else {
+        // sino esta, agrego la bata completa.
+        carrito.push({
+            marca: bateriaMarca,
+            precio: bateriaPrecio,
+            cantidad: bataCantidad
+        });
+    }
+}
+
 alert(`Bienvenido a TiendaMusic`)
 const comprarBateria = (listaOrdenada)=>{
     let volverAComprar;
@@ -24,12 +41,12 @@ const comprarBateria = (listaOrdenada)=>{
         bataCantidad = parseInt(prompt(`Cuantas vas a comprar?`))
 
         const bata = baterias.find(b=> b.marca.toLowerCase() === bataElejida.toLowerCase())
-        console.log(bata);
+        //console.log(bata);
         
-
         if(bata){
             alert(`${bataCantidad} Bateria ${bata.marca} Agregada al carrito`)
-            carrito.push(bata.marca, bata.precio)
+            agregarBataCarrito(bata.marca, bata.precio, bataCantidad)
+            //carrito.push(bata.marca, bata.precio, bataCantidad)
         }else if(bata === undefined){
             alert(`ALERTA!! \nPor favor ingresa una bata para poder realizar la busqueda en nuestra base de datos \nEl dato ingresado: ${bataElejida} no se permite`)
         }else{
@@ -41,7 +58,7 @@ const comprarBateria = (listaOrdenada)=>{
 }
 
 listaOrdenada()
-console.log(carrito
 
-);
 
+
+console.log(carrito);
