@@ -16,7 +16,6 @@ const ordXPrecioMenorMayor = () => {
 //******************Carrito*****/
 const agregarBataCarrito = (bateriaMarca, bateriaPrecio, bataCantidad) => {
     const bataIgual = carrito.find(b => b.marca === bateriaMarca);
-    
     // Si la bata está en el carrito, actualizo cantidad
     if (bataIgual) {
         bataIgual.cantidad += bataCantidad;
@@ -31,6 +30,7 @@ const agregarBataCarrito = (bateriaMarca, bateriaPrecio, bataCantidad) => {
 }
 
 alert(`Bienvenido a TiendaMusic`)
+
 const comprarBateria = (listaOrdenada)=>{
     let volverAComprar;
     let bataElejida = '';
@@ -40,6 +40,11 @@ const comprarBateria = (listaOrdenada)=>{
         bataElejida = prompt(`Que bateria te gustaria comprar? \n${listaOrdenada.join('\n')}`);
         bataCantidad = parseInt(prompt(`Cuantas vas a comprar?`))
 
+        while((bataCantidad <= 0)|| isNaN(bataCantidad)){
+            alert(`ATENCION!!! \nNo podes llevar ${bataCantidad} productos`)
+            bataCantidad = parseInt(prompt(`Vuelve a ingresar la cantidad. \n"Recorda ingresar un valor numerico mayor a 0"`))
+        }
+
         const bata = baterias.find(b=> b.marca.toLowerCase() === bataElejida.toLowerCase())
         //console.log(bata);
         
@@ -47,7 +52,7 @@ const comprarBateria = (listaOrdenada)=>{
             alert(`${bataCantidad} Bateria ${bata.marca} Agregada al carrito`)
             agregarBataCarrito(bata.marca, bata.precio, bataCantidad)
             //carrito.push(bata.marca, bata.precio, bataCantidad)
-        }else if(bata === undefined){
+        }else if(bata === undefined ){
             alert(`ALERTA!! \nPor favor ingresa una bata para poder realizar la busqueda en nuestra base de datos \nEl dato ingresado: ${bataElejida} no se permite`)
         }else{
             alert('Lo siento pero no podemos encontrar el producto elejido')
@@ -55,10 +60,37 @@ const comprarBateria = (listaOrdenada)=>{
 
         volverAComprar = confirm('Queres realizar otra compra?')
     }while(volverAComprar)
+
+        
+        console.log(carrito);
+        
+        confirmarCarrito()
 }
 
+
+const confirmarCarrito = ()=>{
+ const listaCarrito = carrito.map( b =>{
+    return `- ${b.marca} -${b.cantidad}unidades`
+ })
+
+ const cant = carrito.map(c=> {
+    return `${c.cantidad}`
+ })
+
+ if(cant > 3){
+    alert('ATENCION!! Con la cantidad de productos que lleva lo ofrecemos un 15% de descuento')
+ }
+
+ const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n Presiones ACEPTAR para continuar, sino CANCELAR para cancelar la compra`)
+
+    if(aceptar){
+        alert('Felicidades ya casi es tuyo')
+    }else{
+        alert(`Gracias por su visita, guardaremos su ${listaCarrito.join('\n')}\ny lo tendremos listo para cuando vuelva`)
+    }
+
+}
+
+
 listaOrdenada()
-
-
-
 console.log(carrito);
