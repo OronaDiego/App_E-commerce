@@ -62,29 +62,25 @@ const comprarBateria = (listaOrdenada)=>{
     }while(volverAComprar)
 
         
-        console.log(carrito);
-        
         confirmarCarrito()
 }
 
 
 const confirmarCarrito = ()=>{
- const listaCarrito = carrito.map( b =>{
+const listaCarrito = carrito.map( b =>{
     return `- ${b.marca} -${b.cantidad}unidades`
- })
-
- const cant = carrito.map(c=> {
+})
+const cant = carrito.map(c=> {
     return `${c.cantidad}`
- })
+    })
 
- if(cant > 3){
-    alert('ATENCION!! Con la cantidad de productos que lleva lo ofrecemos un 15% de descuento')
- }
-
- const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n Presiones ACEPTAR para continuar, sino CANCELAR para cancelar la compra`)
+const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n Presiones ACEPTAR para continuar, sino CANCELAR para cancelar la compra`)
 
     if(aceptar){
         alert('Felicidades ya casi es tuyo')
+        if(cant > 3){
+            descuento()
+            }
     }else{
         alert(`Gracias por su visita, guardaremos su ${listaCarrito.join('\n')}\ny lo tendremos listo para cuando vuelva`)
     }
@@ -92,5 +88,13 @@ const confirmarCarrito = ()=>{
 }
 
 
+const descuento = ()=>{
+        
+    const desc = carrito.map(d=>{
+        return `20% ${d.precio * 0.80}`
+    })
+    alert(`Obtuvo un descuento del ${desc} por llevar esa cantidad de productos`)
+}
+
 listaOrdenada()
-console.log(carrito);
+
