@@ -1,6 +1,8 @@
 
 const carrito = []
 
+
+//******************Muestro una lista ordenada y modificada para el usuario */
 const listaOrdenada = () => {
     const listaOrdenada = baterias.map(bata => {
         return `-${bata.marca} > Precio: $${bata.precio}`
@@ -38,68 +40,95 @@ const comprarBateria = (listaOrdenada) => {
     let bataCantidad = 0;
 
     do {
+
         bataElejida = prompt(`Que bateria te gustaria comprar? \n${listaOrdenada.join('\n')}`);
 
         bataCantidad = parseInt(prompt(`Cuantas vas a comprar?`))
-
+        const sinstock = comprobarStock(bataElejida)
+        
         while ((bataCantidad <= 0) || isNaN(bataCantidad)) {
             alert(`ATENCION!!! \nNo podes llevar ${bataCantidad} productos`)
             bataCantidad = parseInt(prompt(`Vuelve a ingresar la cantidad. \n"Recorda ingresar un valor numerico mayor a 0"`))
         }
+        let bata = baterias.find(b => b.marca.toLowerCase() === bataElejida.toLowerCase())
 
-        const bata = baterias.find(b => b.marca.toLowerCase() === bataElejida.toLowerCase())
-
+        if(sinstock){
+            alert('no quedo stock de este producto')
+            bata = false
+        }
+        
         if (bata) {
             alert(`${bataCantidad} unidades de Bateria ${bata.marca} agregada al carrito`)
             agregarBataCarrito(bata.marca, bata.precio, bataCantidad)
             //carrito.push(bata.marca, bata.precio, bataCantidad)
         } else if (bata === undefined) {
-            alert(`ALERTA!! \nPor favor ingresa una bata para poder realizar la busqueda en nuestra base de datos \nEl dato ingresado: ${bataElejida} no se permite`)
+            alert(`ALERTA!! \nPor favor ingresa una bata para poder realizar la busqueda en nuestra base de datos \n\nEl dato ingresado: ${bataElejida} no se permite`)
         } else {
-            alert('Lo siento pero no podemos encontrar el producto elejido')
+            alert('Lo siento pero no pudimos agregarlo al carrito')
         }
 
         volverAComprar = confirm('Queres realizar otra compra?')
     } while (volverAComprar)
 
-    if (bataElejida !== null) {
+    if ((bataElejida !== null) && (carrito.length !== 0)) {
         confirmarCarrito()
+    }else{
+        alert("Gracias por su visita\nVuelva pronto!")
     }
 }
 
 
+
+
+
+//**************compruebo Stock*******/
+const comprobarStock = (bataElejida,) => {
+
+    const comprobarStock = baterias.filter(s => s.stock === 0)
+    // console.log(comprobarStock);
+    //retorna true si no hay stock
+    const noStock = comprobarStock.some(m => m.marca.toLowerCase() === bataElejida.toLowerCase())
+    // console.log(noStock);
+    return noStock
+}
+
+
+
+//******************Confirmacion del carrito****************/
 const confirmarCarrito = () => {
     const listaCarrito = carrito.map(b => {
         return `* ${b.marca} Unidades: ${b.cantidad}`
     })
-
     const cant = carrito.map(c => {
         return `${c.cantidad}`
     })
 
     const canBatas = carrito.length;
-
-
-    const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n Presione: \n->ACEPTAR para confirmar \n->CANCELAR para cancelar la compra`)
-
+    const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n\n Presione: \n->ACEPTAR para confirmar \n->CANCELAR para cancelar la compra`)
     if (aceptar) {
         alert('Felicidades ya casi es tuyo')
-        if ((canBatas > 2)|| (cant > 1)) {
+        if ((canBatas >= 2) || (cant > 1)) {
             descuento()
         }
     } else {
-        alert(`Gracias por su visita, guardaremos su ${listaCarrito.join('\n')}\ny lo tendremos listo para cuando vuelva`)
+        alert(`Gracias por su visita, guardaremos su ${listaCarrito.join('\n')}\nLo tendremos listo para cuando vuelva`)
     }
-
 }
 
 
-const descuento = () => {
 
+
+
+// **********Descuento*********
+const descuento = () => {
     const desc = carrito.map(d => {
         return `20% ${d.precio * 0.80}`
     })
     alert(`Obtuvo un descuento del ${desc} por llevar esa cantidad de productos`)
+}
+
+const finalizarCompra = () => {
+
 }
 
 listaOrdenada()
