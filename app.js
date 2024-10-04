@@ -48,7 +48,6 @@ const comprarBateria = (listaOrdenada) => {
         }
 
         const bata = baterias.find(b => b.marca.toLowerCase() === bataElejida.toLowerCase())
-        //console.log(bata);
 
         if (bata) {
             alert(`${bataCantidad} unidades de Bateria ${bata.marca} agregada al carrito`)
@@ -73,15 +72,12 @@ const confirmarCarrito = () => {
     const listaCarrito = carrito.map(b => {
         return `* ${b.marca} Unidades: ${b.cantidad}`
     })
-    console.log(listaCarrito);
 
     const cant = carrito.map(c => {
         return `${c.cantidad}`
     })
 
     const canBatas = carrito.length;
-    console.log(canBatas);
-
 
 
     const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n Presione: \n->ACEPTAR para confirmar \n->CANCELAR para cancelar la compra`)
