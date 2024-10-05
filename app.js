@@ -16,6 +16,8 @@ const ordXPrecioMenorMayor = () => {
     listaOrdenada()
 }
 
+
+
 //******************Carrito*****/
 const agregarBataCarrito = (bateriaMarca, bateriaPrecio, bataCantidad) => {
     const bataIgual = carrito.find(b => b.marca === bateriaMarca);
@@ -34,6 +36,9 @@ const agregarBataCarrito = (bateriaMarca, bateriaPrecio, bataCantidad) => {
 
 alert(`Bienvenido a TiendaMusic`)
 
+
+
+//********************Funcion Comprar bateria************/
 const comprarBateria = (listaOrdenada) => {
     let volverAComprar;
     let bataElejida = '';
@@ -99,17 +104,15 @@ const confirmarCarrito = () => {
     const listaCarrito = carrito.map(b => {
         return `* ${b.marca} Unidades: ${b.cantidad}`
     })
-    const cant = carrito.map(c => {
-        return `${c.cantidad}`
-    })
 
-    const canBatas = carrito.length;
-    const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n\n Presione: \n->ACEPTAR para confirmar \n->CANCELAR para cancelar la compra`)
+    // const total = listaCarrito.reduce((acc,element)=>acc + (element.precio * element.cantidad),0 )
+    // console.log(total);
+    
+
+    const aceptar = confirm(`Confirmar compra: \n ${listaCarrito.join('\n')}\n\nPresione: \n->ACEPTAR para confirmar \n->CANCELAR para cancelar la compra`)
     if (aceptar) {
         alert('Felicidades ya casi es tuyo')
-        if ((canBatas >= 2) || (cant > 1)) {
-            descuento()
-        }
+        finalizarCompra(listaCarrito)
     } else {
         alert(`Gracias por su visita, guardaremos su ${listaCarrito.join('\n')}\nLo tendremos listo para cuando vuelva`)
     }
@@ -117,17 +120,18 @@ const confirmarCarrito = () => {
 
 
 
+const finalizarCompra = (listaCarrito) => {
+  const cantidadTotal = carrito.reduce((acc,element)=>acc + element.cantidad,0)
+  const costoTotal = carrito.reduce((acc,element)=> acc + element.precio * element.cantidad,0)
+  const desc = costoTotal * 0.80;
+    if(costoTotal >100000){
+        alert(`Obtuvo un descuento del 20% sobre el total\nQuedando en: $${desc}`)
+    }
 
-
-// **********Descuento*********
-const descuento = () => {
-    const desc = carrito.map(d => {
-        return `20% ${d.precio * 0.80}`
-    })
-    alert(`Obtuvo un descuento del ${desc} por llevar esa cantidad de productos`)
-}
-
-const finalizarCompra = () => {
+  alert(`Resumen de su compra: \n${listaCarrito.join('\n')}
+        \nTotal de productos : ${cantidadTotal}\nCosto Total: $${costoTotal}
+        \nDescuento Aplicado: $${desc}
+  `)
 
 }
 
