@@ -2,6 +2,9 @@
 const carrito = []
 
 
+const resumen = document.getElementById('resumen')
+resumen.className = "res";
+
 //******************Muestro una lista ordenada y modificada para el usuario */
 const listaOrdenada = () => {
     const listaOrdenada = baterias.map(bata => {
@@ -102,7 +105,7 @@ const comprobarStock = (bataElejida,) => {
 //******************Confirmacion del carrito****************/
 const confirmarCarrito = () => {
     const listaCarrito = carrito.map(b => {
-        return `* ${b.marca} Unidades: ${b.cantidad}`
+        return `* ${b.marca} - ${b.cantidad} u`
     })
 
     // const total = listaCarrito.reduce((acc,element)=>acc + (element.precio * element.cantidad),0 )
@@ -129,9 +132,15 @@ const finalizarCompra = (listaCarrito) => {
     }
 
   alert(`Resumen de su compra: \n${listaCarrito.join('\n')}
-        \nTotal de productos : ${cantidadTotal}\nCosto Total: $${costoTotal}
-        \nDescuento Aplicado: $${desc}
+        \nTotal de productos : ${cantidadTotal}\nCosto parcial: $${costoTotal}
+        \nTotal a pagar con descuento incluido: $${desc}
   `)
+  resumen.innerHTML = `<div>
+        <h2>Resumen de su compra:</h2>
+        <h3>Lista de productos a llevar :<br>${listaCarrito.join('</br>')}</h3>
+        <p>Total de productos : ${cantidadTotal} U.</p>
+        <p>Costo parcial: $${costoTotal}</p>
+        <p>Total a pagar con el descuento incluido: $${desc}</p></div>  `
 
 }
 

@@ -18,3 +18,19 @@ header h1{
     width: 50px;
     font-size: 20px;
 }
+
+.res{
+    text-align: center;
+}
+.res h2{
+    color: aliceblue;
+    background: grey;
+    padding: 10px;
+}
+.res h3{
+    font-size: 20px;
+    background-color: #e5e5e5;  
+}
+p:last-child{
+    background-color: rgb(4, 182, 4);
+}
