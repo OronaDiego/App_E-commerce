@@ -4,6 +4,8 @@ const carrito = []
 
 const resumen = document.getElementById('resumen')
 resumen.className = "res";
+const btnAction = document.getElementById('btnAction');
+
 
 //******************Muestro una lista ordenada y modificada para el usuario */
 const listaOrdenada = () => {
@@ -37,7 +39,7 @@ const agregarBataCarrito = (bateriaMarca, bateriaPrecio, bataCantidad) => {
     }
 }
 
-alert(`Bienvenido a TiendaMusic`)
+// alert(`Bienvenido a TiendaMusic`)
 
 
 
@@ -47,6 +49,7 @@ const comprarBateria = (listaOrdenada) => {
     let bataElejida = '';
     let bataCantidad = 0;
 
+        alert("Bienvenido a TiendaDrummer")
     do {
 
         bataElejida = prompt(`Que bateria te gustaria comprar? \n${listaOrdenada.join('\n')}`);
@@ -144,5 +147,5 @@ const finalizarCompra = (listaCarrito) => {
 
 }
 
-listaOrdenada()
-
+// listaOrdenada()
+btnAction.onclick = ()=>{listaOrdenada()}
