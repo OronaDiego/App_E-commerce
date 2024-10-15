@@ -5,6 +5,8 @@ const carrito = []
 const resumen = document.getElementById('resumen')
 resumen.className = "res";
 const btnAction = document.getElementById('btnAction');
+const btnCarrito = document.querySelector('.btn')
+console.log(btnCarrito.innerText);
 
 
 //******************Muestro una lista ordenada y modificada para el usuario */
@@ -108,7 +110,7 @@ const comprobarStock = (bataElejida,) => {
 //******************Confirmacion del carrito****************/
 const confirmarCarrito = () => {
     const listaCarrito = carrito.map(b => {
-        return `* ${b.marca} - ${b.cantidad} u`
+        return ` ${b.marca}  ${b.cantidad} u`
     })
 
     // const total = listaCarrito.reduce((acc,element)=>acc + (element.precio * element.cantidad),0 )
@@ -121,6 +123,9 @@ const confirmarCarrito = () => {
         finalizarCompra(listaCarrito)
     } else {
         alert(`Gracias por su visita, guardaremos su ${listaCarrito.join('\n')}\nLo tendremos listo para cuando vuelva`)
+        localStorage.setItem('carrito', listaCarrito)
+        console.log(listaCarrito);
+        
     }
 }
 
@@ -144,8 +149,9 @@ const finalizarCompra = (listaCarrito) => {
         <p>Total de productos : ${cantidadTotal} U.</p>
         <p>Costo parcial: $${costoTotal}</p>
         <p>Total a pagar con el descuento incluido: $${desc}</p></div>  `
+  btnCarrito.innerText = cantidadTotal;      
 
 }
 
 // listaOrdenada()
-btnAction.onclick = ()=>{listaOrdenada()}
+// btnAction.onclick = ()=>{listaOrdenada()}

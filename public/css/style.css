@@ -35,3 +35,28 @@ header h1{
 p:last-child{
     background-color: rgb(4, 182, 4);
 }
+
+.card {
+    max-width: 30%;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+.card .card-image .card-title {
+    position: unset;
+    font-weight: 600;
+}
+img {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px !important;
+}
+#resumen {
+    display: grid;
+    gap: 1rem;
+    max-width: 70rem;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
