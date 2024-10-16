@@ -13,6 +13,9 @@ header{
 header h1{
     font-family: "Montserrat", system-ui;
 }
+#divEmail{
+    margin-top: 15px;
+}
 
 .btnDiv{
     text-align: center;

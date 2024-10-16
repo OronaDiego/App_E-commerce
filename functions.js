@@ -3,7 +3,6 @@ const checkMayor = document.querySelector('#flexCheckChecked')
 const form = document.querySelector('.form-check')
 const contenedor = document.getElementById('resumen')
 
-const btnAdd = document.getElementsByClassName("btnAdd")
 
 // Eventos de los checks
 checkDefault.addEventListener('change', () => {
@@ -42,22 +41,31 @@ const mostrarProductosDom = () => {
       div.className = "card";
 
       div.innerHTML = `
-            <div class="card-image">
-                  <img src="${batas.img}">
-                  <span class="card-title">${batas.marca}</span>
-            </div>
-                  <div class="card-content">
-                     <p>$${batas.precio}</p>
-                     <button class="btnAdd" id="${batas.id}">Agregar Al carrito</button>
-                  </div>
+      <div class="card-image">
+      <img src="${batas.img}">
+      <span class="card-title">${batas.marca}</span>
+      </div>
+      <div class="card-content">
+      <p>$${batas.precio}</p>
+      <button type="button" class="btnAdd" id="${batas.id}">Agregar Al carrito</button>
+      </div>
       `
       contenedor.appendChild(div)
    })
+
+   const buttons = document.querySelectorAll('.btnAdd');
+   buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+         const cardContent = e.target.parentElement;
+         const mensaje = document.createElement('p');
+         mensaje.textContent = 'Aún no está disponible esa función';
+         mensaje.style.color = 'red'; // Opcional: cambiar el color del mensaje
+         cardContent.appendChild(mensaje);
+      });
+   });
 }
 
 mostrarProductosDom();
-
-
 
 
 

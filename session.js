@@ -1,83 +1,5 @@
-// const btnLogin = document.getElementById('btnLogin')
-// const inputEmail = document.getElementById('email');
-// const password = document.getElementById('password');    
-// const btnRegister = document.getElementById('btnRegister')
-
-// const users= [];
-
-// //escucha el dom cuando carga 
-// document.addEventListener('DOMContentLoaded', ()=>{
-//     setTimeout(()=>{
-        
-//         if(!localStorage.getItem("user")){
-//             showRegistrationForm()
-//         }
-//     },5000)
-// })
-// //muestra el modal Fomr de registro
-// const showRegistrationForm = ()=>{
-// alert('Por favor, registrese para continuar en la web')
-// let myModal = new bootstrap.Modal(document.getElementById('iniciarRegistro'));
-// myModal.show();
-// }
-
-// //genero ID
-// const idGenerator = ()=>{
-//     const id = Math.floor(Math.random() * Date.now()).toString(23)
-//     return id
-// }
-
-// // evento click sobre el boton del modal register
-// btnRegister.addEventListener('click', (e)=> {
-//     e.preventDefault()
-//     let id = idGenerator()
-//     let email = inputEmail.value;
-
-//     guardarUsuarios(id,email)
-//     console.log(users);
-    
-//     // localStorage.setItem('user',JSON.stringify(users))
-//     alert("Registro exitoso")
-
-//     let modal = bootstrap.Modal.getInstance(document.getElementById('iniciarRegistro')); 
-//     modal.hide();
-// });
-
-// //evento sobre el btn IniciarSession
-// btnLogin.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     let emailSession = document.getElementById('emailSession').value
-//     let passwordSession = document.getElementById('passwordSession').value
-//     let storage = JSON.parse(localStorage.getItem('user')) 
-//     console.log(emailSession);
-//     console.log(passwordSession);
-//     console.log(storage[0].email);
-//     if(storage[0].email === emailSession){
-//         alert("acceso correcto")
-//     }else{
-//         alert('acceso denegado \nUsted no esta registrado')
-//         showRegistrationForm()
-//     }
-    
-// })
-
-// //Guardo usuarios en el array users creando un objeto por cada usuario
-// const guardarUsuarios = (id,email)=>{
-//     let user = {
-//         id:id,
-//         email: email,
-//     }
-//     users.push(user)
-// }
-
-// // const saveStorage = (clave,valor)=>{
-// //     localStorage.setItem(clave,valor)
-// // }
-// // for(const usuarios of users){
-// //     saveStorage(usuarios.id,users);
-// // }
-
 const btnLogin = document.getElementById('btnLogin');
+// const btnSession =document.getElementById('bntSession')
 const inputEmail = document.getElementById('email');
 const password = document.getElementById('password');    
 const btnRegister = document.getElementById('btnRegister');
@@ -155,7 +77,8 @@ btnLogin.addEventListener('click', (e) => {
 
     if (userFound) {
         alert("Acceso correcto");
-        let modalLogin = bootstrap.Modal.getInstance(document.getElementById('iniciarSession')); 
+        let modalLogin = bootstrap.Modal.getInstance(document.getElementById('iniciarSession'));
+        mostrarEmail(emailSession)
         modalLogin.hide();
     } else {
         alert('Acceso denegado \nUsted no está registrado');
@@ -163,6 +86,17 @@ btnLogin.addEventListener('click', (e) => {
     }
     
 });
+const btnSession= document.querySelector('#btnSession')
+
+const mostrarEmail = (email)=>{
+    let div=document.getElementById('divEmail')
+    let p = document.createElement('p')
+    p.innerHTML = ` <p>Bienvenido ${email}</p> `
+    
+    div.appendChild(p)
+    
+}
+
 
 
 
