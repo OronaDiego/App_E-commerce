@@ -17,8 +17,6 @@
     <header>
         <h1>Tienda Drumer</h1>
         <button class="btn"><i class="fas fa-shopping-cart"></i>0</button>
-        <!-- <button id="btnSession" type="button" class="btn btn-primary" data-toggle="modal"
-            data-target="#loginModal">IniciarSession</button> -->
         <button type="button" id="btnSession" class="btn btn-primary" data-bs-toggle="modal"
             data-bs-target="#iniciarSession">
             Iniciar Session
@@ -26,9 +24,40 @@
     </header>
     <main>
 
-        <!-- Button trigger modal -->
 
-        <!-- Modal -->
+                    <!-- modalRegister -->
+        <div class="modal fade" id="iniciarRegistro" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Aquí iría tu formulario de registro -->
+                        <form>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com"
+                                    autocomplete="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password"
+                                    autocomplete="current-password">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btnRegister">Registrarse</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <!-- Modal iniciarSession -->
         <div class="modal fade" id="iniciarSession" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -40,13 +69,13 @@
                     <div class="modal-body">
                         <form id="loginForm">
                             <div class="form-group">
-                                <label for="username">Usuario</label>
-                                <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario"
-                                    autocomplete="username">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="emailSession" placeholder="nombre@ejemplo.com"
+                                    autocomplete="email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña</label>
-                                <input type="password" class="form-control" id="password"
+                                <input type="password" class="form-control" id="passwordSession"
                                     placeholder="Ingresa tu contraseña" autocomplete="current-password">
                             </div>
                         </form>
@@ -58,10 +87,8 @@
                 </div>
             </div>
         </div>
-
-
-
-
+        
+        
 
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">

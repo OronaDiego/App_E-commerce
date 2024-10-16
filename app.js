@@ -6,7 +6,7 @@ const resumen = document.getElementById('resumen')
 resumen.className = "res";
 const btnAction = document.getElementById('btnAction');
 const btnCarrito = document.querySelector('.btn')
-console.log(btnCarrito.innerText);
+// console.log(btnCarrito.innerText);
 
 
 //******************Muestro una lista ordenada y modificada para el usuario */
@@ -124,7 +124,7 @@ const confirmarCarrito = () => {
     } else {
         alert(`Gracias por su visita, guardaremos su ${listaCarrito.join('\n')}\nLo tendremos listo para cuando vuelva`)
         localStorage.setItem('carrito', listaCarrito)
-        console.log(listaCarrito);
+        // console.log(listaCarrito);
         
     }
 }
