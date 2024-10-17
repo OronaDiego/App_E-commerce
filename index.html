@@ -17,13 +17,32 @@
     <header>
         <h1>Tienda Drumer</h1>
         <div id="divEmail"></div>
-        <button class="btn"><i class="fas fa-shopping-cart"></i>0</button>
+        <button class="btn carrito" data-bs-toggle="modal"
+        data-bs-target="#modalCarrito" ><i class="fas fa-shopping-cart"></i>0</button>
         <button type="button" id="btnSession" class="btn btn-primary" data-bs-toggle="modal"
             data-bs-target="#iniciarSession">
             Iniciar Session
         </button>
     </header>
     <main>
+            <!-- Modal Carrito -->
+            <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Carrito</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bodyCarrito">
+                    </div>
+                    <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 
 
                     <!-- modalRegister -->
@@ -36,7 +55,6 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- Aquí iría tu formulario de registro -->
                         <form>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo electrónico</label>
@@ -143,7 +161,7 @@
     <script src="stock.js"></script>
     <script src="app.js"></script>
     <script src="functions.js"></script>
-    <script src="storage.js"></script>
+    <script src="carrito.js"></script>
     <script src="session.js"></script>
     <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

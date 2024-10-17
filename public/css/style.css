@@ -35,9 +35,9 @@ header h1{
     font-size: 20px;
     background-color: #e5e5e5;  
 }
-p:last-child{
+/* p:last-child{
     background-color: rgb(4, 182, 4);
-}
+} */
 
 .card {
     max-width: 30%;

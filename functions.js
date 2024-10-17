@@ -53,16 +53,6 @@ const mostrarProductosDom = () => {
       contenedor.appendChild(div)
    })
 
-   const buttons = document.querySelectorAll('.btnAdd');
-   buttons.forEach(button => {
-      button.addEventListener('click', (e) => {
-         const cardContent = e.target.parentElement;
-         const mensaje = document.createElement('p');
-         mensaje.textContent = 'Aún no está disponible esa función';
-         mensaje.style.color = 'red'; // Opcional: cambiar el color del mensaje
-         cardContent.appendChild(mensaje);
-      });
-   });
 }
 
 mostrarProductosDom();
