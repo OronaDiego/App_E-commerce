@@ -5,13 +5,17 @@
     box-sizing: border-box;
 }
 
-header{
+.clima{
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: space-around;
 }
 header h1{
     font-family: "Montserrat", system-ui;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
 }
 #divEmail{
     margin-top: 15px;

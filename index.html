@@ -15,14 +15,18 @@
 
 <body>
     <header>
-        <h1>Tienda Drumer</h1>
-        <div id="divEmail"></div>
-        <button class="btn carrito" data-bs-toggle="modal"
-        data-bs-target="#modalCarrito" ><i class="fas fa-shopping-cart"></i>0</button>
-        <button type="button" id="btnSession" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#iniciarSession">
-            Iniciar Session
-        </button>
+        <section id="weather">
+        </section>
+        <nav>
+            <h1>Tienda Drumer</h1>
+            <div id="divEmail"></div>
+            <button class="btn carrito" data-bs-toggle="modal"
+            data-bs-target="#modalCarrito" ><i class="fas fa-shopping-cart"></i>0</button>
+            <button type="button" id="btnSession" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#iniciarSession">
+                Iniciar Session
+            </button>
+        </nav>
     </header>
     <main>
             <!-- Modal Carrito -->
@@ -157,7 +161,7 @@
 
 
 
-
+    <script src="apiWeather.js"></script>
     <script src="stock.js"></script>
     <script src="app.js"></script>
     <script src="functions.js"></script>
