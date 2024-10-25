@@ -1,5 +1,5 @@
 
-const carrito = []
+// const carrito = []
 
 
 const resumen = document.getElementById('resumen')

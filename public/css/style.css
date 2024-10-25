@@ -5,10 +5,53 @@
     box-sizing: border-box;
 }
 
+/* secction clima */
 .clima{
     display: flex;
     justify-content: space-around;
+    font-family: "Montserrat";
+    line-height: 30px;
+    padding: 10px;
+    background-color: rgb(12, 12, 12);
+    color: aliceblue;
+    font-size: 14px;
 }
+.i{
+    display: flex;
+}
+.sol{
+    background-image: url(../img/clima/soleado.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    margin-left: 10px;
+}
+.nubes{
+    background-image: url(../img/clima/nublado.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    margin-left: 10px;
+}
+.lluvia{
+    background-image: url(../img/clima/tormenta.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    margin-left: 10px;
+}
+
+/* fin secction clima */
+
+/*****Carrito descripcion  */
+.carrito-desc{
+    display: flex;
+}
+.carrito-desc .bt{
+    margin-left: auto;
+}
+/***** fin Carrito descripcion  */
+
 header h1{
     font-family: "Montserrat", system-ui;
 }
@@ -19,6 +62,12 @@ nav{
 }
 #divEmail{
     margin-top: 15px;
+}
+
+/* btn iniciar sesion */
+#btnSession{
+    border: 2px solid #000000;
+    font-family: 'Montserrat';
 }
 
 .btnDiv{

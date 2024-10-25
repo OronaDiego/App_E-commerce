@@ -58,7 +58,7 @@ btnRegister.addEventListener('click', (e) => {
     let email = inputEmail.value;
 
     guardarUsuarios(id, email);  // Guarda el usuario en el array y en el localStorage
-    alert("Registro exitoso");
+    Swal.fire('registro exitoso')
 
     // Cierra el modal de registro
     let modal = bootstrap.Modal.getInstance(document.getElementById('iniciarRegistro')); 
@@ -76,12 +76,20 @@ btnLogin.addEventListener('click', (e) => {
     let userFound = users.find(user => user.email === emailSession);
 
     if (userFound) {
-        alert("Acceso correcto");
+        Swal.fire({
+            title: "Éxito",
+            text: "Aceso correcto",
+            icon:"success"
+        });
         let modalLogin = bootstrap.Modal.getInstance(document.getElementById('iniciarSession'));
         mostrarEmail(emailSession)
         modalLogin.hide();
     } else {
-        alert('Acceso denegado \nUsted no está registrado');
+        Swal.fire({
+            title: 'Acceso denegado',
+            text: "Usted no esta registrado",
+            icon: "error"
+        })
         showRegistrationForm();
     }
     
