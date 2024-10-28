@@ -18,7 +18,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&lang=es&un
 
         div.innerHTML = `
                 <div class="i">
-                    <p > Cielo ${clima}</p>
+                    <p>${clima}</p>
                     <div class="icon">
                     </div>
                 </div>
