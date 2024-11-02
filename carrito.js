@@ -1,5 +1,6 @@
 const carrito = [];
 const contCarrito = document.querySelector('.carritoHeader')
+const btnFinalizarCompra = document.querySelector('#finalizarCompra')
 
 const buttons = document.querySelectorAll('.btnAdd');
 buttons.forEach(button => {
@@ -35,10 +36,26 @@ buttons.forEach(button => {
         });
     });
 });
+
 // Funcion para actualizar la cantidad de productos que hay en el carrito
 function actualizarCantidadCarrito() {
     let total = carrito.reduce((acc,element)=>acc+element.cantidad,0)    
     contCarrito.innerHTML = `<i class="fas fa-shopping-cart"></i> ${total}`;
+}
+
+// Llamamos a actualizarEstadoBoton() cada vez que cambie el carrito
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarEstadoBoton(); // Chequeo inicial al cargar la página
+});
+
+
+// function para mostrar el btn de finalizar compra
+function actualizarEstadoBoton() {
+    if (carrito.length === 0) {
+        btnFinalizarCompra.style.display = 'none'; // Oculta el botón si el carrito está vacío
+    } else {
+        btnFinalizarCompra.style.display = 'block'; // Muestra el botón si hay elementos en el carrito
+    }
 }
 
 
@@ -52,7 +69,7 @@ function renderCarrito(modalCarrito) {
         let div = document.createElement('div');
         div.classList.add('container', 'carrito-desc');
         div.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center ">
                 <p><strong>Producto:</strong> ${item.marca}</p>
                 <p><strong>Precio:</strong> $${item.precio}</p>
                 <p><strong>Cantidad:</strong> ${item.cantidad}</p>
@@ -60,7 +77,7 @@ function renderCarrito(modalCarrito) {
             </div>
             <hr>
         `;
-        
+        actualizarEstadoBoton()
         // Agregar el producto al modal del carrito
         modalCarrito.appendChild(div);
         
@@ -90,6 +107,7 @@ function renderCarrito(modalCarrito) {
             })
         });
     });
+    actualizarEstadoBoton()
 }
 
 // Función para eliminar un producto del carrito
@@ -102,5 +120,16 @@ function eliminarDelCarrito(id) {
     }
 }
 
+// Accion sobre el btin finalizar compra 
+btnFinalizarCompra.addEventListener("click",(e)=>{
+    e.preventDefault()
+    // localStorage.setItem('carrito')
+    redirigirResumenCarrito()
+    
+})
 
+//function que redirecciona al resumen
+function redirigirResumenCarrito() {
+    window.location.href = './resumen.html'; 
+}
 

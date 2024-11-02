@@ -44,11 +44,13 @@
 /* fin secction clima */
 
 /*****Carrito descripcion  */
-.carrito-desc{
-    display: flex;
-}
+
 .carrito-desc .bt{
-    margin-left: auto;
+    background: #FFA603; 
+}
+.carrito-desc .bt:hover{
+    background: #ff0303;
+    font-weight: bold;
 }
 /***** fin Carrito descripcion  */
 
@@ -90,7 +92,6 @@ body{
     font-family: "Montserrat";
 }
 
-
 .res{
     text-align: center;
 }
@@ -103,9 +104,6 @@ body{
     font-size: 20px;
     background-color: #e5e5e5;  
 }
-/* p:last-child{
-    background-color: rgb(4, 182, 4);
-} */
 
 .card {
     max-width: 30%;
