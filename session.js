@@ -7,19 +7,22 @@ const inputEmailSession = document.getElementById('emailSession'); // Asegúrate
 // Inicializa el array de usuarios y carga el estado de sesión del localStorage
 let users = JSON.parse(localStorage.getItem('users')) || [];
 let isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn')) || false;
+console.log("users"+users);
+console.log("islogedIn"+isLoggedIn);
 
 // Verifica el estado de sesión al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     if (isLoggedIn) {
         mostrarEmail(localStorage.getItem('loggedInUserEmail'));
         cambiarBotonLogin(true); // Cambia el botón a "Cerrar Sesión"
-        Swal.fire(`Bienvenido Nuevamente a Tienda Drummer`);
+        // Swal.fire(`Bienvenido Nuevamente a Tienda Drummer`);
     } else {
         setTimeout(() => {
             if (users.length === 0) {
-                alert('Por favor, regístrese para continuar en la web');
+                Swal.fire('Por favor, regístrese para continuar en la web')
                 showRegistrationForm();
             } else {
+                Swal.fire('Por favor, inicie sesión para continuar en la web');
                 showLoginForm(); // Muestra el formulario de inicio de sesión si hay usuarios registrados
             }
         }, 5000);
