@@ -1,15 +1,5 @@
 const contenedorClima = document.getElementById('weather')
 
-const dias = ["Domingo","Lunes", "Martes", "Miercoles","Jueves","Viernes","Sabado"];
-const meses = ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre","Noviembre","Diciembre"]
-const fecha = new Date()
-const anio = fecha.getFullYear()
-
-console.log(dias[fecha.getDay()]);
-console.log(meses[fecha.getMonth()]);
-console.log(anio)
-
-
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&lang=es&units=metric&appid=db765fac1a5faaa470deacba508c3d0b")
     .then(response => response.json())
     .then(data => {

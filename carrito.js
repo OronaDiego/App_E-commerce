@@ -123,7 +123,8 @@ function eliminarDelCarrito(id) {
 // Accion sobre el btin finalizar compra 
 btnFinalizarCompra.addEventListener("click",(e)=>{
     e.preventDefault()
-    // localStorage.setItem('carrito')
+    
+    localStorage.setItem('carrito', JSON.stringify(carrito))
     redirigirResumenCarrito()
     
 })
