@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(../img/wave.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+}
+body h1{
+    text-align: center;
+}
+
+#finalizarPago{
+    border: 2px solid rgb(29, 29, 29);
+}
+
+footer{
+    background-color: #FFA603;
+}
+.footer-info{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    padding: 50px 20px 20px 20px;
+}

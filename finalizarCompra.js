@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const local = localStorage.getItem('isLoggedIn')
     console.log(local);
     
-    if(local=== 'false'){
+    if(local === 'false'){
         Swal.fire("Debe iniciar sesison")
         setInterval((()=>{
             window.location.href = './index.html';
